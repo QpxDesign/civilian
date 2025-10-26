@@ -8,7 +8,7 @@ RUN cargo build --release
 EXPOSE 1947
 FROM gcr.io/distroless/cc
 COPY --from=builder /app/assets /assets
-COPY --from=builder /app/.env /.env
+COPY --from=builder /app/api/.env /.env
 COPY --from=builder /app/target/release/civilian-api /
 
 CMD ["./civilian-api"]
