@@ -1,0 +1,17 @@
+Incidents are formed madlibs-style:
+<Person/Who> <Synonym for 'seen'> <Action>
+(ie "Landscaper spotted  ")
+
+CREATE TABLE incidents (
+    incident_id text,
+    reporter text,
+    time_unix bigint,
+    lat real,
+    long real,
+    title text,
+    incident_type text,
+    child_of text,
+    description text,
+    level int,
+    address text
+);

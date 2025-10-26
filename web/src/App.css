@@ -1,0 +1,136 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Poppins;
+  background-color: black;
+  position: relative;
+}
+a {
+  color: inherit;
+}
+button {
+  font-size: 1.12em;
+  padding: 0.5em 2em;
+  margin-top: 2em;
+  border: none;
+  color: white;
+  border-radius: 10em;
+  background-color: #1b64f2;
+}
+button:hover {
+  background-color: #194cb0;
+  cursor: pointer;
+}
+* {
+  margin: 0;
+  padding: 0;
+}
+.flexbox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.v {
+  flex-direction: column;
+}
+.hide {
+  display: none;
+}
+.map-container {
+  width: 100vw;
+  height: 100vh;
+  z-index: 3;
+}
+.overlay-full {
+  flex-direction: column;
+  position: absolute;
+  z-index: 5;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "lato";
+}
+.logo {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  margin-top: 3em;
+  height: 1.75em;
+  background-color: rgba(0, 0, 0, 0);
+  z-index: 5;
+  color: white;
+  filter: invert(100%) sepia(1%) saturate(4409%) hue-rotate(192deg)
+    brightness(116%) contrast(100%);
+}
+.report {
+  position: absolute;
+  z-index: 5;
+  font-size: 1.1em;
+  padding: 0.25em 0.75em;
+  border: none;
+  background-color: white;
+  border-radius: 100em;
+  bottom: 0;
+  left: 0;
+  margin: 2em 2em;
+}
+.incident-marker {
+  position: relative;
+  padding: 0.75em;
+  border-radius: 100em;
+  font-size: 2em;
+  width: 2.5em;
+  height: 2.5em;
+  /* animation: pulsate 3s infinite; */
+}
+.incident-marker span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.incident-marker.true {
+  border: 3px solid black;
+}
+.incident-marker.five {
+  background-color: magenta;
+  box-shadow: 0 0 40px 5px #bd23fa;
+}
+.incident-marker.four {
+  background-color: #820404;
+  box-shadow: 0 0 40px 5px #4a0101;
+}
+.incident-marker.three {
+  background-color: red;
+  box-shadow: 0 0 40px 5px #fa2323;
+}
+.incident-marker.two {
+  background-color: orange;
+  box-shadow: 0 0 40px 5px #db740b;
+}
+.incident-marker.one {
+  background-color: yellow;
+  box-shadow: 0 0 40px 5px #e6dc22;
+}
+
+@keyframes pulsate {
+  0% {
+    height: 2em;
+    width: 2em;
+  }
+  50% {
+    height: 2.25em;
+    width: 2.25em;
+  }
+  100% {
+    height: 2em;
+    width: 2em;
+  }
+}
