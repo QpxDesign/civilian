@@ -1,4 +1,4 @@
-FROM rust:1.89.0 as builder
+FROM rust:1.89.0 as base
 
 # PREP
 RUN cargo install cargo-chef --version ^0.1
