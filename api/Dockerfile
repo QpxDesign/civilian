@@ -2,7 +2,7 @@
 FROM rust:1.89.0 as builder
 WORKDIR /app
 ADD . /app
-RUN --mount=type=cache,target=/usr/local/cargo/registry cargo build --release
+RUN --mount=type=cache,target=$CARGO_HOME/registry cargo build --release
 
 # /home/quinn/.cargo/registry
 # PROD
