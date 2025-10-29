@@ -1,7 +1,7 @@
 # BUILD
 FROM rust:1.89.0 as builder
-WORKDIR /app/api
-ADD . /app/api
+WORKDIR /app
+ADD . /app
 RUN --mount=type=cache,target=/usr/local/cargo/registry cargo build --release
 
 # /home/quinn/.cargo/registry
