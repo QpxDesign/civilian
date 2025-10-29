@@ -1,9 +1,10 @@
 # BUILD
 FROM rust:1.89.0 as builder
-WORKDIR /app
-ADD . /app
-RUN --mount=type=cache cargo build --release
+WORKDIR /app/api
+ADD . /app/api
+RUN --mount=type=cache,target=/usr/local/cargo/registry cargo build --release
 
+# /home/quinn/.cargo/registry
 # PROD
 EXPOSE 1947
 FROM gcr.io/distroless/cc
