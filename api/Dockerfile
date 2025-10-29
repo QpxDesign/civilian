@@ -2,7 +2,7 @@
 FROM rust:1.89.0 as builder
 WORKDIR /app
 ADD . /app
-RUN cargo build --release
+RUN --mount=type=cache cargo build --release
 
 # PROD
 EXPOSE 1947

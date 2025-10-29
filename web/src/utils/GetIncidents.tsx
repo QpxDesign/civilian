@@ -7,6 +7,5 @@ export async function GetIncidents(): Promise<Array<Incident>> {
     return [];
   }
   let out: Array<Incident> = await response.json();
-  console.log(out);
   return out;
 }
