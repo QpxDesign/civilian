@@ -35,7 +35,7 @@ pub async fn send_incidents(State(state): State<AppState>) -> String {
         if o.time_unix > (ts - 60 * 60 * 6).try_into().unwrap() {
             out.push(o);
         } else {
-            let _ = sqlx::query("DELETE FROM incidents WHERE incident_id='$1'")
+            let _a = sqlx::query("DELETE FROM incidents WHERE incident_id='$1'")
                 .bind(o.incident_id)
                 .execute(&state.pool)
                 .await;
