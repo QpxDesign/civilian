@@ -15,12 +15,22 @@ fn dist(x_1: f32, y_1: f32, x_2: f32, y_2: f32) -> f32 {
 
 pub async fn create_incidents(n: i64, pool: &Pool<Postgres>) -> Vec<Incident> {
     let _ = dotenvy::dotenv();
-
-    let events: Vec<Event> =
-        serde_json::from_str(&file_handler::file_to_string("./assets/Events.json")).unwrap();
+    let mut event_rows = sqlx::query("SELECT * FROM events").fetch(pool);
+    let mut events: Vec<Event> = Vec::new();
+    while let Some(row) = event_rows.try_next().await.expect("Woops") {
+        events.push(Event {
+            title: row
+                .try_get("title")
+                .unwrap_or("Crappy Web Design".to_string()),
+            icon_slug: row.try_get("icon_slug").unwrap_or("❌".to_string()),
+        })
+    }
 
     let mut output: Vec<Incident> = Vec::new();
-    let mut rows = sqlx::query("SELECT * FROM locations ORDER BY RANDOM() LIMIT 100").fetch(pool);
+    let mut rows = sqlx::query("SELECT * FROM locations ORDER BY RANDOM() LIMIT $1")
+        .bind(n)
+        .fetch(pool);
+
     while let Some(row) = rows.try_next().await.expect("Woops") {
         let lat: f32 = row.try_get("lat").unwrap_or(0.0);
         let long: f32 = row.try_get("long").unwrap_or(0.0);
