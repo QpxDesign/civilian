@@ -18,7 +18,6 @@ WORKDIR /app
 ADD . /app
 RUN --mount=type=cache,target=$SCCACHE_DIR,sharing=locked \ cargo build --release
 
-# /home/quinn/.cargo/registry
 # PROD
 EXPOSE 1947
 FROM gcr.io/distroless/cc
